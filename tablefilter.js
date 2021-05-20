@@ -4,6 +4,17 @@
     function makeFilterFunction(expr) {
         if (expr == "")
             return null;
+            
+        if (expr.startsWith('+'))
+            return function(s) {
+                return s.toUpperCase().includes(expr.substr(1).toUpperCase());
+            };
+            
+        if (expr.startsWith('-'))
+            return function(s) {
+                return !s.toUpperCase().includes(expr.substr(1).toUpperCase());
+            };
+            
         return new Function("s", "return " + expr + ";");
     }
     

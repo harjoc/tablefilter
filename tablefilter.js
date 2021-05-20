@@ -1,12 +1,12 @@
 (function () {
-	"use strict";
-	
-	function makeFilterFunction(expr) {
-		if (expr == "")
-			return null;
-		return new Function("s", "return " + expr + ";");
-	}
-	
+    "use strict";
+    
+    function makeFilterFunction(expr) {
+        if (expr == "")
+            return null;
+        return new Function("s", "return " + expr + ";");
+    }
+    
     function isMatchingRow(row, filters) {
         let cells = row.children;
         let rowMatches = true;
@@ -14,8 +14,8 @@
             let cell = cells[c];
             let filter = filters[c];
             let cellContent = cell.innerText;
-			if (filter)
-				rowMatches &= !!filter(cellContent);
+            if (filter)
+                rowMatches &= !!filter(cellContent);
         }
         return rowMatches;
     }
